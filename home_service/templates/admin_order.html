@@ -18,8 +18,6 @@
                                       <th>Customer</th>
                                       <th>Service_name</th>
                                       <th>Date</th>
-                                      <th>Days</th>
-                                      <th>Hours</th>
                                       <th>View Detail</th>
                                       <th>Status</th>
                                       <th>Action</th>
@@ -33,8 +31,6 @@
                                   <td>{{i.customer.user.first_name}} {{i.customer.user.last_name}}</td>
                                   <td>{{i.service.service_name}}</td>
                                   <td>{{i.book_date}}</td>
-                                  <td>{{i.book_days}}</td>
-                                  <td>{{i.book_hours}}</td>
                                   <td><a href="{% url 'order_detail' i.id %}" ><i  style="color:green;font-size:28px" class="fa fa-eye"></i></a></td>
                                   {% if i.status.status == 'Accept' %}
                                   <td><span class="label label-success">{{i.status.status}}</span>

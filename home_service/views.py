@@ -143,22 +143,22 @@ class LoginAdminView(View):
 def Signup_User(request):
     error = ""
     if request.method == 'POST':
-        f = request.POST['fname']
-        l = request.POST['lname']
+        # f = request.POST['fname']
+        # l = request.POST['lname']
         u = request.POST['uname']
         e = request.POST['email']
         p = request.POST['pwd']
         con = request.POST['contact']
         add = request.POST['address']
         type = request.POST['type']
-        im = request.FILES['image']
+        # im = request.FILES['image']
         dat = datetime.date.today()
-        user = User.objects.create_user(email=e, username=u, password=p, first_name=f,last_name=l)
+        user = User.objects.create_user(email=e, username=u, password=p)
         if type=="customer":
-            Customer.objects.create(user=user,contact=con,address=add,image=im)
+            Customer.objects.create(user=user,contact=con,address=add)
         else:
             stat = Status.objects.get(status='pending')
-            Service_Man.objects.create(doj=dat,image=im,user=user,contact=con,address=add,status=stat)
+            Service_Man.objects.create(doj=dat,user=user,contact=con,address=add,status=stat)
         error = "create"
     d = {'error':error}
     return render(request,'signup.html',d)
@@ -262,17 +262,15 @@ def Customer_Booking(request,pid):
         sign = Service_Man.objects.get(user=user)
         pass
     terror=False
+    da = 1  
+    ho = 8 
     ser1 = Service_Man.objects.get(id=pid)
-    print(ser1.price)
     if request.method == "POST":
         n = request.POST['name']
         c = request.POST['contact']
         add = request.POST['add']
         dat = request.POST['date']
-        da = request.POST['day']
-        ho = request.POST['hour']
         price=ser1.price * int(ho)
-        print(price)
         st = Status.objects.get(status="pending")
         Order.objects.create(status=st,service=ser1,customer=sign,book_date=dat,book_days=da,book_hours=ho,price=price)
         terror=True

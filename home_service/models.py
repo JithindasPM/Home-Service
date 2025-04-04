@@ -24,7 +24,7 @@ class Customer(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     contact = models.CharField(max_length=100, null=True)
     address = models.CharField(max_length=100, null=True)
-    image = models.FileField(null=True)
+    image = models.FileField(null=True,blank=True)
 
     def __str__(self):
         return self.user.first_name
@@ -41,7 +41,7 @@ class Service_Man(models.Model):
     service_name = models.CharField(max_length=100, null=True)
     experience = models.CharField(max_length=100, null=True)
     id_card = models.FileField(null=True)
-    image = models.FileField(null=True)
+    image = models.FileField(null=True,blank=True)
     price=models.IntegerField(default=500)
 
     def __str__(self):

@@ -3,29 +3,29 @@
 {% block body %}
 {% if terror %}
 <script>
-    alert('Booking Successful,we will contact you soon');
-    window.location=('{% url 'customer_order' %}');
+	alert('Booking Successful,we will contact you soon');
+	window.location = ('{% url 'customer_order' %}');
 </script>
 {% endif %}
 
-	<div class="w3l_banner_info" style="height:10px">
-		<div class="slider1">
-			<div class="callbacks_container">
-				<ul class="rslides" id="slider3">
-					<li>
-						<div class="slider1-img" style="height:90px">
-							<div class="slider_banner_info">
+<div class="w3l_banner_info" style="height:10px">
+	<div class="slider1">
+		<div class="callbacks_container">
+			<ul class="rslides" id="slider3">
+				<li>
+					<div class="slider1-img" style="height:90px">
+						<div class="slider_banner_info">
 
 
-							</div>
 						</div>
-					</li>
+					</div>
+				</li>
 
 
-				</ul>
-			</div>
+			</ul>
 		</div>
 	</div>
+</div>
 </div>
 </header>
 
@@ -43,25 +43,35 @@
 					<div class="row">
 						<div class="col-md-6">
 							<label for="contactusername">Name</label>
-							<input class="form-control" type="text" name="name" value="{{ser.user.first_name}}" readonly required="">
+							<input class="form-control" type="text" name="name" value="{{ser.user.first_name}}" readonly
+								required="">
 						</div>
 						<div class="col-md-6">
 							<label for="contactemail">Mobile</label>
-							<input class="form-control" type="text" name="contact" value="{{ser.contact}}" required="" readonly>
+							<input class="form-control" type="text" name="contact" value="{{ser.contact}}" required=""
+								readonly>
 						</div>
 					</div>
-		
+
 					<div class="row">
 						<div class="col-md-12">
 							<label for="contactusername">Address</label>
-							<input class="form-control" type="text" name="add" value="{{ser.address}}" required="" readonly>
+							<input class="form-control" type="text" name="add" value="{{ser.address}}" required=""
+								readonly>
 						</div>
 						<div class="col-md-12">
-							<label for="contactemail">Date</label>
-							<input class="form-control" type="date" name="date" required="">
+							<label for="dateInput">Date</label>
+							<input
+								class="form-control"
+								type="date"
+								name="date"
+								id="dateInput"
+								required
+							>
 						</div>
+						
 					</div>
-					<div class="row">
+					<!-- <div class="row">
 						<div class="col-md-12">
 							<label for="contactusername">Days</label>
 							<select class="form-control" name="day" required="">
@@ -76,17 +86,17 @@
 						</div>
 						<div class="col-md-12">
 							<label for="contactusername">Hours</label>
-								<select class="form-control" name="hour" required="">
-									<option>Select Hours</option>
-									<option>1</option>
-									<option>2</option>
-									<option>3</option>
-									<option>4</option>
-									<option>5</option>
-									<option>6</option>
-								</select>
+							<select class="form-control" name="hour" required="">
+								<option>Select Hours</option>
+								<option>1</option>
+								<option>2</option>
+								<option>3</option>
+								<option>4</option>
+								<option>5</option>
+								<option>6</option>
+							</select>
 						</div>
-					</div>
+					</div> -->
 					<div class="text-center">
 						<button type="submit" class="btn btn-info" style="margin-top:5%;">Book Now</button>
 					</div>
@@ -98,6 +108,13 @@
 		</div>
 	</div>
 </section>
-	<!-- //contact -->
+<script>
+	window.onload = function () {
+		const today = new Date().toISOString().split('T')[0];
+		document.getElementById("dateInput").setAttribute("min", today);
+	};
+</script>
+
+<!-- //contact -->
 
 {% endblock %}

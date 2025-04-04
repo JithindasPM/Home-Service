@@ -73,7 +73,11 @@
         </div>
         <div class="form-group col-md-2">
           <label for="exampleInputPassword1"></label>
+          {%if pro.image%}
           <img src="{{pro.image.url}}" style="width:100px; border-radius: 0.5em;">
+          {%else%}
+          <h1>Photo Not Available</h1>
+          {%endif%}
         </div>
       </div>
 

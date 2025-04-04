@@ -10,7 +10,7 @@
             <h3 style="padding:20px;background-color:Darkslategrey;color:white;font-weight:bold">Service Man Detail</h3>
 			<div class="climate-gd1-top">
 				<div class="col-md-6 climate-gd1top-left">
-					<h4>Full Name : {{pro.user.first_name}} {{pro.user.last_name}}</h4>
+					<h4>Username : {{pro.user.username}}</h4>
 					<h4>Contact : {{pro.contact}}</h4>
 					<h4>Email : {{pro.user.email}}</h4>
 					<h4>Date of join : {{pro.doj}}</h4>
@@ -19,7 +19,11 @@
 					<h4>Service : {{pro.service_name}}</h4>
 				</div>
 				<div class="col-md-6 climate-gd1top-right">
+					{%if pro.image%}
 					<h4><img src="{{pro.image.url}}" style="width:25%;height:110px"></h4>
+					{%else%}
+					<h4>Photo Not Available</h4>
+					{%endif%}
 					{% if pro.id_card %}
                     <h4><img src="{{pro.id_card.url}}" style="width:50%;height:115px"></h4>
 					{% else %}

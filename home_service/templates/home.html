@@ -59,7 +59,7 @@
   <img class="card-img-top" src="{{i.image.url}}" alt="Card image cap">
   <div class="card-body">
 	<h3>{{i.category}}</h3>
-	<h5>({{i.total}})</h5>
+	{% comment %} <h5>({{i.total}})</h5> {% endcomment %}
     <p class="card-text">{{i.desc}}</p>
 	<div class="mt-auto mb-2">
 		<a href="{% url 'explore_services' i.id %}" class="btn btn-primary">Explore</a>
